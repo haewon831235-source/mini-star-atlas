@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MINI STAR ATLAS — Design Tokens (Tailwind v4 @theme)
+   ============================================================ */
+@theme {
+  /* Color */
+  --color-night: #050816;
+  --color-surface: #0d1028;
+  --color-elevated: #161b3d;
+  --color-accent: #e8c76a;
+  --color-accent-soft: #f3e2a8;
+  --color-secondary: #7b61ff;
+  --color-secondary-soft: #a896ff;
+  --color-ink: #f5f6ff;
+  --color-ink-soft: #a6abc9;
+  --color-ink-muted: #6b7099;
+  --color-line: #232a52;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #fb7185;
+  --color-info: #60a5fa;
+
+  /* Rarity */
+  --color-rarity-n: #9ca3af;
+  --color-rarity-r: #60a5fa;
+  --color-rarity-sr: #a78bfa;
+  --color-rarity-ssr: #e8c76a;
+  --color-rarity-ur: #fb7185;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Font */
+  --font-sans: "Pretendard", var(--font-geist-sans), system-ui, sans-serif;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Animations */
+  --animate-twinkle: twinkle 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-rise: rise 0.5s var(--ease-standard) both;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html { color-scheme: dark; }
+
+body {
+  background: var(--color-night);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App is mobile-first: center a phone-width column on desktop */
+.app-shell {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #1a1f4a 0%, rgba(13, 16, 40, 0) 60%),
+    var(--color-night);
+}
+
+/* ============================================================
+   Utilities / Effects
+   ============================================================ */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 18px rgba(232, 199, 106, 0.45);
+  }
+  .glow-gold {
+    box-shadow: 0 0 24px rgba(232, 199, 106, 0.35);
+  }
+  .glow-purple {
+    box-shadow: 0 0 28px rgba(123, 97, 255, 0.45);
+  }
+  .card-shadow {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+  .gradient-gold {
+    background: linear-gradient(135deg, #e8c76a, #f3e2a8);
+  }
+  .gradient-galaxy {
+    background: linear-gradient(160deg, #161b3d 0%, #0d1028 60%, #050816 100%);
+  }
+  .gradient-ur {
+    background: linear-gradient(135deg, #fb7185, #e8c76a, #7b61ff);
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 999px; }
