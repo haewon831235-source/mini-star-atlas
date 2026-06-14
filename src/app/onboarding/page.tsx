@@ -20,14 +20,14 @@ export default function OnboardingPage() {
   const [step, setStep] = useState(0);
   const last = step === SLIDES.length - 1;
 
-  const next = () => (last ? router.push("/signup") : setStep((s) => s + 1));
+  const next = () => (last ? router.push("/birthday") : setStep((s) => s + 1));
   const slide = SLIDES[step];
 
   return (
     <main className="relative flex min-h-[100dvh] flex-col gradient-galaxy px-6 py-10">
       <Starfield count={40} />
       <div className="relative z-10 flex justify-end">
-        <Link href="/signup" className="text-sm text-ink-muted">건너뛰기</Link>
+        <Link href="/birthday" className="text-sm text-ink-muted">건너뛰기</Link>
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center">

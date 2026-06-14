@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Starfield } from "@/components/starfield";
 import { ZodiacIcon } from "@/components/zodiac-icon";
@@ -8,18 +8,37 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useUser } from "@/store/user-provider";
 import { getZodiacById } from "@/data/zodiacs";
+import { getZodiacByBirthday } from "@/lib/zodiac";
+import type { Zodiac } from "@/types/index";
 
 export default function ZodiacRevealPage() {
   const router = useRouter();
   const { profile, loading } = useUser();
+  const [zodiac, setZodiac] = useState<Zodiac | null>(null);
 
   useEffect(() => {
-    if (!loading && !profile) router.replace("/onboarding");
+    if (loading) return;
+
+    if (profile) {
+      const z = getZodiacById(profile.zodiac_id);
+      if (z) { setZodiac(z); return; }
+    }
+
+    const birthday = sessionStorage.getItem("pending_birthday");
+    if (!birthday) { router.replace("/onboarding"); return; }
+    const z = getZodiacByBirthday(birthday);
+    if (z) setZodiac(z);
   }, [loading, profile, router]);
 
-  if (!profile) return null;
-  const zodiac = getZodiacById(profile.zodiac_id);
   if (!zodiac) return null;
+
+  const next = () => {
+    if (profile) {
+      router.push("/reveal/character");
+    } else {
+      router.push("/signup");
+    }
+  };
 
   return (
     <main className="relative flex min-h-[100dvh] flex-col items-center justify-center gradient-galaxy px-6 text-center">
@@ -41,8 +60,8 @@ export default function ZodiacRevealPage() {
         <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-ink-soft">{zodiac.description}</p>
       </div>
       <div className="relative z-10 mt-12 w-full">
-        <Button size="lg" className="w-full" onClick={() => router.push("/reveal/character")}>
-          수호 캐릭터 만나기
+        <Button size="lg" className="w-full" onClick={next}>
+          {profile ? "수호 캐릭터 만나기" : "가입하고 캐릭터 받기"}
         </Button>
       </div>
     </main>
