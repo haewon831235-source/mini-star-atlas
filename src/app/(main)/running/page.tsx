@@ -6,6 +6,7 @@ import { Play, Pause, Square, MapPin, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/store/user-provider";
 import { cn } from "@/lib/utils";
+import { RunningResultCanvas } from "@/components/running-result-canvas";
 
 const RunningMap = dynamic(
   () => import("@/components/running-map").then((m) => m.RunningMap),
@@ -72,6 +73,9 @@ export default function RunningPage() {
   const [gpsReady, setGpsReady] = useState(false);
   const [currentPos, setCurrentPos] = useState<Coord | null>(null);
   const [route, setRoute] = useState<Coord[]>([]);
+  const [lastRoute, setLastRoute] = useState<Coord[]>([]);
+  const [lastDistance, setLastDistance] = useState(0);
+  const [lastDuration, setLastDuration] = useState(0);
 
   const lastPos = useRef<Coord | null>(null);
   const watchId = useRef<number | null>(null);
@@ -173,6 +177,10 @@ export default function RunningPage() {
     if (starPoints > 0) addStar(starPoints);
     earnBadge("ac-first-run");
 
+    setLastRoute(route);
+    setLastDistance(Math.round(distanceRef.current * 100) / 100);
+    setLastDuration(duration);
+
     setStatus("idle");
     setRoute([]);
   };
@@ -250,6 +258,9 @@ export default function RunningPage() {
       {status !== "idle" && (
         <p className="mt-3 text-center text-xs text-ink-muted">⭐ 1km 달릴 때마다 10 Star Point 획득</p>
       )}
+
+      {/* 러닝 결과 지도 */}
+      <RunningResultCanvas route={lastRoute} distance={lastDistance} duration={lastDuration} />
 
       {/* 러닝 기록 */}
       {history.length > 0 && (
