@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Map, HeartHandshake, ShoppingBag, User } from "lucide-react";
+import { Home, Map, HeartHandshake, ShoppingBag, User, Footprints } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const TABS = [
   { href: "/home", label: "홈", icon: Home },
   { href: "/worldmap", label: "월드맵", icon: Map },
+  { href: "/running", label: "러닝", icon: Footprints },
   { href: "/compatibility", label: "궁합", icon: HeartHandshake },
   { href: "/shop", label: "굿즈", icon: ShoppingBag },
   { href: "/mypage", label: "MY", icon: User },
