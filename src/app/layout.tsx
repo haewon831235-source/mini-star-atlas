@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import { cookies } from "next/headers";
 import { NextIntlClientProvider } from "next-intl";
+import { getMessages, getLocale } from "next-intl/server";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
@@ -22,22 +23,13 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-const SUPPORTED_LOCALES = ["ko", "en", "ja", "zh"] as const;
-type Locale = (typeof SUPPORTED_LOCALES)[number];
-
-function isLocale(v: string | undefined): v is Locale {
-  return SUPPORTED_LOCALES.includes(v as Locale);
-}
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const raw = cookieStore.get("NEXT_LOCALE")?.value;
-  const locale: Locale = isLocale(raw) ? raw : "ko";
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  const locale = await getLocale();
+  const messages = await getMessages();
 
   return (
     <html lang={locale} className={`${geistSans.variable} h-full antialiased`}>
