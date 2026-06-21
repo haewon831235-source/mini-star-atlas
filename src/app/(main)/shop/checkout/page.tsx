@@ -16,7 +16,7 @@ import { formatKRW } from "@/lib/utils";
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, total, clear } = useCart();
-  const { profile, earnBadge } = useUser();
+  const { profile, earnBadge, recordPurchaseStamps } = useUser();
   const toast = useToast();
   const [form, setForm] = useState({ name: profile?.nickname ?? "", phone: "", address: "" });
   const [loading, setLoading] = useState(false);
@@ -38,12 +38,21 @@ export default function CheckoutPage() {
       return toast("배송 정보를 모두 입력해 주세요.");
     }
     setLoading(true);
+    const paidTotal = total;
     setTimeout(() => {
       earnBadge("ac-shopper");
+      // 팬 패스포트: 결제 금액 기준 스탬프 자동 적립.
+      const orderRef = `OD${Date.now().toString().slice(-6)}`;
+      const stamps = recordPurchaseStamps(paidTotal, orderRef);
       clear();
       setLoading(false);
-      toast("주문이 완료됐어요! 🎉");
-      router.replace("/home");
+      if (stamps > 0) {
+        toast(`주문 완료! 패스포트 스탬프 ${stamps}개 적립 🎟️`);
+        router.replace("/passport");
+      } else {
+        toast("주문이 완료됐어요! 🎉");
+        router.replace("/home");
+      }
     }, 800);
   };
 

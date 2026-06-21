@@ -24,6 +24,9 @@ const STAMP_SOURCE_LABEL: Record<StampSource, string> = {
   admin: "관리자 적립",
 };
 
+// 구매 금액 기준 스탬프 1개당 결제액 (정책값).
+const STAMP_PER_KRW = 30_000;
+
 interface CouponInput {
   title: string;
   kind: CouponKind;
@@ -69,6 +72,7 @@ interface UserContextValue {
   ownCharacter: (characterId: string) => void;
   earnBadge: (badgeId: string) => void;
   addStamp: (source: StampSource, label?: string) => void;
+  recordPurchaseStamps: (total: number, orderRef?: string) => number;
   issueCoupon: (input: CouponInput) => void;
   redeemCoupon: (couponId: string) => void;
 }
@@ -303,6 +307,48 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  // 결제 완료 시 구매 금액 기준으로 스탬프 일괄 적립. 적립 개수를 반환.
+  const recordPurchaseStamps = useCallback((total: number, orderRef?: string) => {
+    const count = Math.floor(total / STAMP_PER_KRW);
+    if (count <= 0) return 0;
+    setProfile((p) => {
+      if (!p) return p;
+      const at = new Date().toISOString();
+      const label = orderRef ? `구매 ${orderRef}` : STAMP_SOURCE_LABEL.purchase;
+      const existing = p.passportStamps ?? [];
+      const added = Array.from({ length: count }, () => ({ source: "purchase" as const, at, label }));
+      const stamps = [...existing, ...added];
+      let coupons = p.coupons ?? [];
+      const history = [...(p.passportHistory ?? [])];
+      // 일괄 적립 중 10칸 경계를 넘을 때마다 완성 보상 쿠폰 발급.
+      for (let n = existing.length + 1; n <= stamps.length; n++) {
+        if (n % 10 === 0) {
+          coupons = [
+            makeCoupon({
+              title: "스탬프 카드 완성 5,000원 할인",
+              kind: "discount",
+              value: "5000원",
+              days: 30,
+              source: `stamp-card-${n / 10}`,
+            }),
+            ...coupons,
+          ];
+          history.unshift({ at, type: "coupon" as const, detail: "스탬프 카드 완성 보상 쿠폰 발급" });
+        }
+      }
+      history.unshift({
+        at,
+        type: "stamp" as const,
+        detail: `굿즈 구매로 스탬프 ${count}개 적립`,
+        amount: count,
+      });
+      const next: UserProfile = { ...p, passportStamps: stamps, coupons, passportHistory: history };
+      persist(next);
+      return next;
+    });
+    return count;
+  }, []);
+
   // 쿠폰 발급 (source 키로 중복 발급 방지 — 멱등).
   const issueCoupon = useCallback((input: CouponInput) => {
     setProfile((p) => {
@@ -345,8 +391,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const value = useMemo<UserContextValue>(
-    () => ({ profile, loading, mode, signUp, signIn, signOut, addExp, addStar, completeQuest, ownCharacter, earnBadge, addStamp, issueCoupon, redeemCoupon }),
-    [profile, loading, mode, signUp, signIn, signOut, addExp, addStar, completeQuest, ownCharacter, earnBadge, addStamp, issueCoupon, redeemCoupon],
+    () => ({ profile, loading, mode, signUp, signIn, signOut, addExp, addStar, completeQuest, ownCharacter, earnBadge, addStamp, recordPurchaseStamps, issueCoupon, redeemCoupon }),
+    [profile, loading, mode, signUp, signIn, signOut, addExp, addStar, completeQuest, ownCharacter, earnBadge, addStamp, recordPurchaseStamps, issueCoupon, redeemCoupon],
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
