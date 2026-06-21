@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import { cookies } from "next/headers";
+import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
@@ -20,13 +22,25 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-export default function RootLayout({
+const SUPPORTED_LOCALES = ["ko", "en", "ja", "zh"] as const;
+type Locale = (typeof SUPPORTED_LOCALES)[number];
+
+function isLocale(v: string | undefined): v is Locale {
+  return SUPPORTED_LOCALES.includes(v as Locale);
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const raw = cookieStore.get("NEXT_LOCALE")?.value;
+  const locale: Locale = isLocale(raw) ? raw : "ko";
+  const messages = (await import(`../../messages/${locale}.json`)).default;
+
   return (
-    <html lang="ko" className={`${geistSans.variable} h-full antialiased`}>
+    <html lang={locale} className={`${geistSans.variable} h-full antialiased`}>
       <head>
         <link
           rel="stylesheet"
@@ -35,9 +49,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full">
-        <Providers>
-          <div className="app-shell">{children}</div>
-        </Providers>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Providers>
+            <div className="app-shell">{children}</div>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -8,11 +8,13 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { CharacterAvatar } from "@/components/character-avatar";
 import { RarityTag } from "@/components/rarity-tag";
+import { useTranslations } from "next-intl";
 import { useUser } from "@/store/user-provider";
 import { CHARACTERS } from "@/data/characters";
 
 export default function CharacterCollectionPage() {
   const { profile } = useUser();
+  const t = useTranslations("Characters");
   if (!profile) return null;
   const ownedCount = profile.ownedCharacterIds.length;
   const pct = Math.round((ownedCount / CHARACTERS.length) * 100);
@@ -20,11 +22,11 @@ export default function CharacterCollectionPage() {
   return (
     <main className="relative min-h-[100dvh]">
       <Starfield count={30} />
-      <TopBar title="캐릭터 도감" back />
+      <TopBar title={t("title")} back />
       <div className="relative z-10 px-4 py-4">
         <Card className="mb-4 p-4">
           <div className="mb-2 flex items-center justify-between text-sm">
-            <span className="font-bold text-ink">수집 현황</span>
+            <span className="font-bold text-ink">{t("collectionStatus")}</span>
             <span className="text-accent">{ownedCount} / {CHARACTERS.length}</span>
           </div>
           <Progress value={pct} />
@@ -46,7 +48,7 @@ export default function CharacterCollectionPage() {
                     </>
                   ) : (
                     <p className="flex items-center gap-1 text-sm text-ink-muted">
-                      <Lock size={14} /> 미보유
+                      <Lock size={14} /> {t("locked")}
                     </p>
                   )}
                 </Card>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { TopBar } from "@/components/top-bar";
 import { Starfield } from "@/components/starfield";
 import { Card } from "@/components/ui/card";
@@ -15,14 +16,9 @@ import { aiCompatibility } from "@/lib/openai";
 import type { RelationType, CompatibilityResult } from "@/types";
 import { cn } from "@/lib/utils";
 
-const RELATIONS: { key: RelationType; label: string; emoji: string }[] = [
-  { key: "friend", label: "우정", emoji: "🤝" },
-  { key: "love", label: "연애", emoji: "💖" },
-  { key: "business", label: "비즈니스", emoji: "💼" },
-];
-
 export default function CompatibilityPage() {
   const { profile } = useUser();
+  const t = useTranslations("Compatibility");
   const [me, setMe] = useState(profile?.birthday ?? "");
   const [partner, setPartner] = useState("");
   const [relation, setRelation] = useState<RelationType>("love");
@@ -33,6 +29,12 @@ export default function CompatibilityPage() {
     text: "",
     error: "",
   });
+
+  const RELATIONS: { key: RelationType; label: string; emoji: string }[] = [
+    { key: "friend", label: t("relations.friend"), emoji: "🤝" },
+    { key: "love", label: t("relations.love"), emoji: "💖" },
+    { key: "business", label: t("relations.business"), emoji: "💼" },
+  ];
 
   const run = () => {
     if (!me || !partner) return;
@@ -50,20 +52,20 @@ export default function CompatibilityPage() {
       const text = await aiCompatibility(apiKey, za.name_ko, zb.name_ko, result);
       setAi({ loading: false, text, error: "" });
     } catch (e) {
-      setAi({ loading: false, text: "", error: e instanceof Error ? e.message : "오류가 발생했어요." });
+      setAi({ loading: false, text: "", error: e instanceof Error ? e.message : t("noData") });
     }
   };
 
   return (
     <main className="relative min-h-[100dvh]">
       <Starfield count={25} />
-      <TopBar title="별자리 궁합" />
+      <TopBar title={t("title")} />
       <div className="relative z-10 space-y-5 px-4 py-4">
         <Card className="space-y-4 p-4">
-          <Input label="나의 생일" type="date" value={me} onChange={(e) => setMe(e.target.value)} />
-          <Input label="상대의 생일" type="date" value={partner} onChange={(e) => setPartner(e.target.value)} />
+          <Input label={t("myBirthday")} type="date" value={me} onChange={(e) => setMe(e.target.value)} />
+          <Input label={t("partnerBirthday")} type="date" value={partner} onChange={(e) => setPartner(e.target.value)} />
           <div>
-            <p className="mb-1.5 text-sm font-medium text-ink-soft">관계 유형</p>
+            <p className="mb-1.5 text-sm font-medium text-ink-soft">{t("relationType")}</p>
             <div className="flex gap-2">
               {RELATIONS.map((r) => (
                 <button
@@ -80,7 +82,7 @@ export default function CompatibilityPage() {
             </div>
           </div>
           <Button size="lg" className="w-full" disabled={!me || !partner} onClick={run}>
-            궁합 보기
+            {t("checkBtn")}
           </Button>
         </Card>
 
@@ -112,13 +114,13 @@ export default function CompatibilityPage() {
                 {ai.text && <p className="text-[15px] leading-relaxed text-ink-soft">✨ {ai.text}</p>}
                 {ai.error && <p className="text-sm text-error">{ai.error}</p>}
                 <Button variant="secondary" className="w-full" disabled={ai.loading} onClick={runAi}>
-                  {ai.loading ? "별에게 묻는 중..." : ai.text ? "다시 코멘트 받기" : "✨ AI 궁합 코멘트 받기"}
+                  {ai.loading ? t("aiLoading") : ai.text ? t("aiBtn") : `✨ ${t("aiBtn")}`}
                 </Button>
               </div>
             ) : (
               <Link href="/mypage/settings" className="block border-t border-line pt-3">
                 <Button variant="outline" className="w-full">
-                  설정에서 OpenAI 키 등록하고 AI 코멘트 켜기
+                  {t("noKeyHint")}
                 </Button>
               </Link>
             )}

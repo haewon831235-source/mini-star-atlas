@@ -5,24 +5,26 @@ import { TopBar } from "@/components/top-bar";
 import { Starfield } from "@/components/starfield";
 import { Card } from "@/components/ui/card";
 import { ZodiacIcon } from "@/components/zodiac-icon";
+import { useTranslations } from "next-intl";
 import { useUser } from "@/store/user-provider";
 import { ZODIACS, getZodiacById } from "@/data/zodiacs";
 
 export default function ZodiacListPage() {
   const { profile } = useUser();
+  const t = useTranslations("Zodiac");
   if (!profile) return null;
   const mine = getZodiacById(profile.zodiac_id)!;
 
   return (
     <main className="relative min-h-[100dvh]">
       <Starfield count={30} />
-      <TopBar title="별자리 도감" back />
+      <TopBar title={t("title")} back />
       <div className="relative z-10 px-4 py-4">
         <Link href={`/zodiac/${mine.code}`}>
           <Card className="mb-4 flex items-center gap-4 border-accent/50 p-4 glow-gold">
             <ZodiacIcon zodiac={mine} size={56} />
             <div>
-              <p className="text-xs text-accent">나의 별자리</p>
+              <p className="text-xs text-accent">{t("myZodiac")}</p>
               <p className="text-lg font-extrabold text-ink">{mine.name_ko} {mine.symbol}</p>
             </div>
           </Card>

@@ -3,19 +3,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Map, HeartHandshake, ShoppingBag, User, Footprints } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-
-const TABS = [
-  { href: "/home", label: "홈", icon: Home },
-  { href: "/worldmap", label: "월드맵", icon: Map },
-  { href: "/running", label: "러닝", icon: Footprints },
-  { href: "/compatibility", label: "궁합", icon: HeartHandshake },
-  { href: "/shop", label: "굿즈", icon: ShoppingBag },
-  { href: "/mypage", label: "MY", icon: User },
-] as const;
 
 export function BottomNav() {
   const pathname = usePathname();
+  const t = useTranslations("Nav");
+
+  const TABS = [
+    { href: "/home", label: t("home"), icon: Home },
+    { href: "/worldmap", label: t("worldmap"), icon: Map },
+    { href: "/running", label: t("running"), icon: Footprints },
+    { href: "/compatibility", label: t("compatibility"), icon: HeartHandshake },
+    { href: "/shop", label: t("shop"), icon: ShoppingBag },
+    { href: "/mypage", label: t("my"), icon: User },
+  ] as const;
 
   return (
     <nav className="fixed bottom-0 left-1/2 z-40 w-full max-w-[480px] -translate-x-1/2 border-t border-line bg-surface/95 backdrop-blur">

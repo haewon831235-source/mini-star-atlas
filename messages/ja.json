@@ -1,0 +1,217 @@
+{
+  "Nav": {
+    "home": "ホーム",
+    "worldmap": "ワールドマップ",
+    "running": "ランニング",
+    "compatibility": "相性",
+    "shop": "グッズ",
+    "my": "MY"
+  },
+  "MyPage": {
+    "title": "マイページ",
+    "level": "レベル",
+    "collection": "コレクション",
+    "badges": "バッジ",
+    "earnedBadges": "獲得したバッジ",
+    "noBadges": "最初のバッジを集めよう ✨",
+    "logout": "ログアウト",
+    "menu": {
+      "characters": "キャラクター図鑑",
+      "zodiac": "星座図鑑",
+      "events": "公演",
+      "growth": "成長",
+      "settings": "設定（APIキー）"
+    }
+  },
+  "Home": {
+    "greeting": "こんにちは、{name}さん",
+    "questTitle": "今日のクエスト",
+    "noQuests": "まもなく新しいミッションが登場！",
+    "questClaim": "受取",
+    "questClaimed": "受取済",
+    "fortuneTitle": "今日の運勢",
+    "fortuneDesc": "運勢を確認しよう",
+    "myZodiac": "私の星座",
+    "worldExplore": "あなたの王国が待っています",
+    "worldExploreDesc": "ワールドマップで星座の王国を探検しよう。",
+    "exploreBtn": "探検する",
+    "shopBtn": "グッズショップへ"
+  },
+  "Fortune": {
+    "title": "今日の運勢",
+    "overall": "総合運",
+    "love": "恋愛運",
+    "money": "金運",
+    "health": "健康運",
+    "luck": "幸運",
+    "aiTitle": "AI運勢解説",
+    "aiBtn": "AI運勢解説を受け取る",
+    "aiLoading": "AIが運勢を分析しています...",
+    "noKeyHint": "設定でOpenAI APIキーを登録するとAI解説を受け取れます。",
+    "goSettings": "設定へ"
+  },
+  "Characters": {
+    "title": "キャラクター図鑑",
+    "collectionStatus": "コレクション状況",
+    "locked": "未収集"
+  },
+  "Zodiac": {
+    "title": "星座図鑑",
+    "myZodiac": "私の星座",
+    "traits": "特性",
+    "element": "元素",
+    "planet": "支配星",
+    "luckyColor": "ラッキーカラー",
+    "luckyItem": "ラッキーアイテム",
+    "luckyNumber": "ラッキーナンバー",
+    "ability": "能力値",
+    "relatedShop": "関連グッズ",
+    "shopBtn": "グッズを見る",
+    "todayFortune": "今日の運勢"
+  },
+  "Events": {
+    "title": "公演",
+    "detail": "公演詳細",
+    "ticketBtn": "チケット予約",
+    "status": {
+      "upcoming": "近日公開",
+      "onsale": "発売中",
+      "soldout": "売り切れ",
+      "ended": "終了"
+    }
+  },
+  "Growth": {
+    "title": "成長",
+    "toNextLevel": "次のレベルまで {exp} EXP",
+    "level": "レベル",
+    "totalExp": "累計EXP",
+    "starPoints": "スターポイント",
+    "howToEarn": "EXP獲得方法",
+    "inviteBtn": "友達を招待してEXPをもらう",
+    "sources": {
+      "attendance": "出席チェック",
+      "quest": "クエスト完了",
+      "invite": "友達招待"
+    }
+  },
+  "Compatibility": {
+    "title": "星座相性",
+    "myBirthday": "自分の誕生日",
+    "partnerBirthday": "相手の誕生日",
+    "relationType": "関係タイプ",
+    "checkBtn": "相性を見る",
+    "noData": "この組み合わせのデータはまだありません。",
+    "aiBtn": "AI詳細分析",
+    "aiLoading": "AIが分析しています...",
+    "noKeyHint": "設定でOpenAI APIキーを登録するとAI詳細分析を受け取れます。",
+    "relations": {
+      "friend": "友情",
+      "love": "恋愛",
+      "business": "ビジネス"
+    }
+  },
+  "Running": {
+    "title": "ランニング",
+    "historyTitle": "ランニング記録",
+    "noHistory": "まだランニング記録がありません。",
+    "mapLoading": "地図を読み込み中...",
+    "startBtn": "スタート",
+    "pauseBtn": "一時停止",
+    "resumeBtn": "再開",
+    "stopBtn": "終了",
+    "distance": "距離",
+    "duration": "時間",
+    "pace": "ペース",
+    "subtitle": "星空の下を走ろう ✨"
+  },
+  "Shop": {
+    "title": "グッズショップ",
+    "categories": {
+      "all": "全て",
+      "doll": "ぬいぐるみ",
+      "keyring": "キーリング",
+      "photocard": "フォトカード",
+      "figure": "フィギュア",
+      "etc": "その他"
+    },
+    "addToCart": "カートへ",
+    "outOfStock": "売り切れ"
+  },
+  "Cart": {
+    "title": "カート",
+    "empty": "カートは空です",
+    "emptyDesc": "気に入ったグッズをカートに入れよう",
+    "goShop": "グッズを見る",
+    "quantity": "数量",
+    "subtotal": "小計",
+    "checkoutBtn": "注文する"
+  },
+  "Checkout": {
+    "title": "注文・決済",
+    "orderItems": "注文商品 ({count})",
+    "shipping": "配送情報",
+    "recipient": "お届け先",
+    "phone": "電話番号",
+    "address": "住所",
+    "addressPlaceholder": "配送先住所",
+    "phonePlaceholder": "電話番号",
+    "total": "合計金額",
+    "payBtn": "デモ決済（実際の請求なし）",
+    "paying": "処理中...",
+    "emptyTitle": "注文する商品がありません",
+    "paymentMethod": "決済方法"
+  },
+  "Settings": {
+    "title": "設定",
+    "apiSection": "OpenAI APIキー",
+    "apiStatus": "OpenAI API接続",
+    "connected": "接続済み",
+    "notSet": "未設定（AI機能無効）",
+    "saveBtn": "保存",
+    "deleteBtn": "削除",
+    "showKey": "表示",
+    "hideKey": "非表示",
+    "apiNote": "キーはデバイスにのみ保存され、サーバーに送信されません（BYOK）。",
+    "howToGet": "APIキーの取得方法",
+    "featureNote": " 機能が有効になります。",
+    "language": "言語",
+    "languageLabel": "表示言語"
+  },
+  "Auth": {
+    "loginTitle": "ログイン",
+    "loginSubtitle": "おかえりなさい、旅人さん",
+    "signupTitle": "新規登録",
+    "email": "メールアドレス",
+    "emailPlaceholder": "star@atlas.com",
+    "password": "パスワード",
+    "passwordPlaceholder": "パスワード",
+    "nickname": "ニックネーム",
+    "nicknamePlaceholder": "旅人のニックネーム",
+    "loginBtn": "ログイン",
+    "loggingIn": "ログイン中...",
+    "signupBtn": "登録する",
+    "signingUp": "登録中...",
+    "toSignup": "アカウントをお持ちでない方は",
+    "toLogin": "アカウントをお持ちの方は",
+    "signupLink": "新規登録",
+    "loginLink": "ログイン"
+  },
+  "Onboarding": {
+    "skip": "スキップ",
+    "nextBtn": "次へ",
+    "startBtn": "はじめる",
+    "slides": {
+      "0": { "title": "12星座の世界へ", "desc": "あなたの誕生日が冒険の始まり。星座と守護キャラクターがあなたを待っています。" },
+      "1": { "title": "12の王国を探検しよう", "desc": "各星座には独自の王国、NPC、クエストが広がっています。" },
+      "2": { "title": "誕生日で星座を見つけよう", "desc": "生年月日を入力するだけで、あなただけの守護キャラクターが決まります。" }
+    }
+  },
+  "Common": {
+    "back": "戻る",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました。",
+    "retry": "再試行",
+    "viewAll": "すべて見る",
+    "points": "点"
+  }
+}

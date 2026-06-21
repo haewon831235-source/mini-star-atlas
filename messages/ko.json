@@ -1,0 +1,217 @@
+{
+  "Nav": {
+    "home": "홈",
+    "worldmap": "월드맵",
+    "running": "러닝",
+    "compatibility": "궁합",
+    "shop": "굿즈",
+    "my": "MY"
+  },
+  "MyPage": {
+    "title": "마이페이지",
+    "level": "레벨",
+    "collection": "컬렉션",
+    "badges": "배지",
+    "earnedBadges": "획득한 배지",
+    "noBadges": "첫 배지를 모아보세요 ✨",
+    "logout": "로그아웃",
+    "menu": {
+      "characters": "캐릭터 도감",
+      "zodiac": "별자리 도감",
+      "events": "공연",
+      "growth": "성장",
+      "settings": "설정 (API 키)"
+    }
+  },
+  "Home": {
+    "greeting": "안녕하세요, {name}님",
+    "questTitle": "오늘의 퀘스트",
+    "noQuests": "곧 새로운 임무가 열려요!",
+    "questClaim": "완료",
+    "questClaimed": "수령함",
+    "fortuneTitle": "오늘의 운세",
+    "fortuneDesc": "행운을 확인하세요",
+    "myZodiac": "나의 별자리",
+    "worldExplore": "당신의 왕국이 기다려요",
+    "worldExploreDesc": "월드맵에서 별자리 왕국을 탐험하세요.",
+    "exploreBtn": "탐험하기",
+    "shopBtn": "굿즈샵 바로가기"
+  },
+  "Fortune": {
+    "title": "오늘의 운세",
+    "overall": "종합운",
+    "love": "애정운",
+    "money": "금전운",
+    "health": "건강운",
+    "luck": "행운",
+    "aiTitle": "AI 운세 해설",
+    "aiBtn": "AI로 운세 해설 받기",
+    "aiLoading": "AI가 운세를 분석하고 있어요...",
+    "noKeyHint": "설정에서 OpenAI API 키를 등록하면 AI 해설을 받을 수 있어요.",
+    "goSettings": "설정으로"
+  },
+  "Characters": {
+    "title": "캐릭터 도감",
+    "collectionStatus": "수집 현황",
+    "locked": "미수집"
+  },
+  "Zodiac": {
+    "title": "별자리 도감",
+    "myZodiac": "나의 별자리",
+    "traits": "특성",
+    "element": "원소",
+    "planet": "지배 행성",
+    "luckyColor": "행운의 색",
+    "luckyItem": "행운의 아이템",
+    "luckyNumber": "행운의 숫자",
+    "ability": "능력치",
+    "relatedShop": "관련 굿즈",
+    "shopBtn": "굿즈 보러가기",
+    "todayFortune": "오늘의 운세"
+  },
+  "Events": {
+    "title": "공연",
+    "detail": "공연 상세",
+    "ticketBtn": "티켓 예매",
+    "status": {
+      "upcoming": "오픈 예정",
+      "onsale": "예매중",
+      "soldout": "매진",
+      "ended": "종료"
+    }
+  },
+  "Growth": {
+    "title": "성장",
+    "toNextLevel": "다음 레벨까지 {exp} EXP",
+    "level": "레벨",
+    "totalExp": "누적 EXP",
+    "starPoints": "스타포인트",
+    "howToEarn": "경험치 획득 방법",
+    "inviteBtn": "친구 초대하고 EXP 받기",
+    "sources": {
+      "attendance": "출석 체크",
+      "quest": "퀘스트 완료",
+      "invite": "친구 초대"
+    }
+  },
+  "Compatibility": {
+    "title": "별자리 궁합",
+    "myBirthday": "나의 생일",
+    "partnerBirthday": "상대의 생일",
+    "relationType": "관계 유형",
+    "checkBtn": "궁합 보기",
+    "noData": "아직 이 조합의 데이터가 없어요.",
+    "aiBtn": "AI 심층 분석",
+    "aiLoading": "AI가 분석하고 있어요...",
+    "noKeyHint": "설정에서 OpenAI API 키를 등록하면 AI 심층 분석을 받을 수 있어요.",
+    "relations": {
+      "friend": "우정",
+      "love": "연애",
+      "business": "비즈니스"
+    }
+  },
+  "Running": {
+    "title": "러닝",
+    "historyTitle": "러닝 기록",
+    "noHistory": "아직 러닝 기록이 없어요.",
+    "mapLoading": "지도 로딩 중...",
+    "startBtn": "시작",
+    "pauseBtn": "일시정지",
+    "resumeBtn": "재개",
+    "stopBtn": "종료",
+    "distance": "거리",
+    "duration": "시간",
+    "pace": "페이스",
+    "subtitle": "별빛 아래 달려요 ✨"
+  },
+  "Shop": {
+    "title": "굿즈샵",
+    "categories": {
+      "all": "전체",
+      "doll": "인형",
+      "keyring": "키링",
+      "photocard": "포토카드",
+      "figure": "피규어",
+      "etc": "기타"
+    },
+    "addToCart": "담기",
+    "outOfStock": "품절"
+  },
+  "Cart": {
+    "title": "장바구니",
+    "empty": "담은 굿즈가 없어요",
+    "emptyDesc": "마음에 드는 굿즈를 담아보세요",
+    "goShop": "굿즈 보러가기",
+    "quantity": "수량",
+    "subtotal": "합계",
+    "checkoutBtn": "주문하기"
+  },
+  "Checkout": {
+    "title": "주문/결제",
+    "orderItems": "주문 상품 ({count})",
+    "shipping": "배송 정보",
+    "recipient": "받는 분",
+    "phone": "연락처",
+    "address": "주소",
+    "addressPlaceholder": "배송 주소",
+    "phonePlaceholder": "010-0000-0000",
+    "total": "총 결제금액",
+    "payBtn": "데모 결제 (실제 결제되지 않습니다)",
+    "paying": "결제 중...",
+    "emptyTitle": "주문할 상품이 없어요",
+    "paymentMethod": "결제 수단"
+  },
+  "Settings": {
+    "title": "설정",
+    "apiSection": "OpenAI API 키",
+    "apiStatus": "OpenAI API 연결",
+    "connected": "연결됨",
+    "notSet": "미설정 (AI 기능 비활성)",
+    "saveBtn": "저장",
+    "deleteBtn": "삭제",
+    "showKey": "보기",
+    "hideKey": "숨기기",
+    "apiNote": "키는 기기에만 저장되며 서버로 전송되지 않습니다 (BYOK).",
+    "howToGet": "API 키 발급 방법",
+    "featureNote": " 기능이 활성화됩니다.",
+    "language": "언어",
+    "languageLabel": "표시 언어"
+  },
+  "Auth": {
+    "loginTitle": "로그인",
+    "loginSubtitle": "다시 만나 반가워요, 여행자님",
+    "signupTitle": "회원가입",
+    "email": "이메일",
+    "emailPlaceholder": "star@atlas.com",
+    "password": "비밀번호",
+    "passwordPlaceholder": "비밀번호",
+    "nickname": "닉네임",
+    "nicknamePlaceholder": "여행자 닉네임",
+    "loginBtn": "로그인",
+    "loggingIn": "로그인 중...",
+    "signupBtn": "가입하기",
+    "signingUp": "가입 중...",
+    "toSignup": "아직 계정이 없으신가요?",
+    "toLogin": "이미 계정이 있으신가요?",
+    "signupLink": "회원가입",
+    "loginLink": "로그인"
+  },
+  "Onboarding": {
+    "skip": "건너뛰기",
+    "nextBtn": "다음",
+    "startBtn": "시작하기",
+    "slides": {
+      "0": { "title": "12별자리의 세계로", "desc": "당신의 생일이 곧 모험의 시작. 별자리와 수호 캐릭터가 당신을 기다려요." },
+      "1": { "title": "12 왕국을 탐험하세요", "desc": "각 별자리마다 고유한 왕국과 NPC, 퀘스트가 펼쳐집니다." },
+      "2": { "title": "생일로 별자리를 찾아요", "desc": "생년월일만 입력하면 당신만의 수호 캐릭터를 부여해 드려요." }
+    }
+  },
+  "Common": {
+    "back": "뒤로",
+    "loading": "로딩 중...",
+    "error": "오류가 발생했어요.",
+    "retry": "다시 시도",
+    "viewAll": "전체보기",
+    "points": "점"
+  }
+}

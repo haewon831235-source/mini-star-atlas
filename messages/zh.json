@@ -1,0 +1,217 @@
+{
+  "Nav": {
+    "home": "首页",
+    "worldmap": "世界地图",
+    "running": "跑步",
+    "compatibility": "星座配对",
+    "shop": "周边",
+    "my": "MY"
+  },
+  "MyPage": {
+    "title": "我的页面",
+    "level": "等级",
+    "collection": "收藏",
+    "badges": "徽章",
+    "earnedBadges": "获得的徽章",
+    "noBadges": "去收集第一个徽章吧 ✨",
+    "logout": "退出登录",
+    "menu": {
+      "characters": "角色图鉴",
+      "zodiac": "星座图鉴",
+      "events": "演出",
+      "growth": "成长",
+      "settings": "设置（API密钥）"
+    }
+  },
+  "Home": {
+    "greeting": "你好，{name}",
+    "questTitle": "今日任务",
+    "noQuests": "新任务即将开启！",
+    "questClaim": "领取",
+    "questClaimed": "已领取",
+    "fortuneTitle": "今日运势",
+    "fortuneDesc": "查看你的运势",
+    "myZodiac": "我的星座",
+    "worldExplore": "你的王国在等你",
+    "worldExploreDesc": "在世界地图上探索星座王国。",
+    "exploreBtn": "开始探索",
+    "shopBtn": "前往周边商店"
+  },
+  "Fortune": {
+    "title": "今日运势",
+    "overall": "综合运",
+    "love": "爱情运",
+    "money": "财运",
+    "health": "健康运",
+    "luck": "幸运",
+    "aiTitle": "AI运势解析",
+    "aiBtn": "获取AI运势解析",
+    "aiLoading": "AI正在分析你的运势...",
+    "noKeyHint": "在设置中添加OpenAI API密钥即可获取AI解析。",
+    "goSettings": "前往设置"
+  },
+  "Characters": {
+    "title": "角色图鉴",
+    "collectionStatus": "收藏状况",
+    "locked": "未收藏"
+  },
+  "Zodiac": {
+    "title": "星座图鉴",
+    "myZodiac": "我的星座",
+    "traits": "特质",
+    "element": "元素",
+    "planet": "守护星",
+    "luckyColor": "幸运色",
+    "luckyItem": "幸运物品",
+    "luckyNumber": "幸运数字",
+    "ability": "能力值",
+    "relatedShop": "相关周边",
+    "shopBtn": "查看周边",
+    "todayFortune": "今日运势"
+  },
+  "Events": {
+    "title": "演出",
+    "detail": "演出详情",
+    "ticketBtn": "购票",
+    "status": {
+      "upcoming": "即将开售",
+      "onsale": "售票中",
+      "soldout": "已售罄",
+      "ended": "已结束"
+    }
+  },
+  "Growth": {
+    "title": "成长",
+    "toNextLevel": "距下一等级还需 {exp} EXP",
+    "level": "等级",
+    "totalExp": "累计EXP",
+    "starPoints": "星星积分",
+    "howToEarn": "EXP获取方式",
+    "inviteBtn": "邀请好友赚取EXP",
+    "sources": {
+      "attendance": "每日签到",
+      "quest": "完成任务",
+      "invite": "邀请好友"
+    }
+  },
+  "Compatibility": {
+    "title": "星座配对",
+    "myBirthday": "我的生日",
+    "partnerBirthday": "对方生日",
+    "relationType": "关系类型",
+    "checkBtn": "查看配对",
+    "noData": "暂无此组合的数据。",
+    "aiBtn": "AI深度分析",
+    "aiLoading": "AI正在分析...",
+    "noKeyHint": "在设置中添加OpenAI API密钥即可获取AI深度分析。",
+    "relations": {
+      "friend": "友情",
+      "love": "恋爱",
+      "business": "商务"
+    }
+  },
+  "Running": {
+    "title": "跑步",
+    "historyTitle": "跑步记录",
+    "noHistory": "暂无跑步记录。",
+    "mapLoading": "地图加载中...",
+    "startBtn": "开始",
+    "pauseBtn": "暂停",
+    "resumeBtn": "继续",
+    "stopBtn": "结束",
+    "distance": "距离",
+    "duration": "时间",
+    "pace": "配速",
+    "subtitle": "在星光下奔跑吧 ✨"
+  },
+  "Shop": {
+    "title": "周边商店",
+    "categories": {
+      "all": "全部",
+      "doll": "毛绒玩具",
+      "keyring": "钥匙扣",
+      "photocard": "照片卡",
+      "figure": "手办",
+      "etc": "其他"
+    },
+    "addToCart": "加入购物车",
+    "outOfStock": "售罄"
+  },
+  "Cart": {
+    "title": "购物车",
+    "empty": "购物车是空的",
+    "emptyDesc": "找找你喜欢的周边吧",
+    "goShop": "去逛周边",
+    "quantity": "数量",
+    "subtotal": "小计",
+    "checkoutBtn": "去结算"
+  },
+  "Checkout": {
+    "title": "订单/结算",
+    "orderItems": "订单商品（{count}）",
+    "shipping": "配送信息",
+    "recipient": "收件人",
+    "phone": "联系电话",
+    "address": "地址",
+    "addressPlaceholder": "配送地址",
+    "phonePlaceholder": "联系电话",
+    "total": "应付总额",
+    "payBtn": "演示支付（不会产生实际费用）",
+    "paying": "处理中...",
+    "emptyTitle": "没有待下单的商品",
+    "paymentMethod": "支付方式"
+  },
+  "Settings": {
+    "title": "设置",
+    "apiSection": "OpenAI API密钥",
+    "apiStatus": "OpenAI API连接",
+    "connected": "已连接",
+    "notSet": "未设置（AI功能未激活）",
+    "saveBtn": "保存",
+    "deleteBtn": "删除",
+    "showKey": "显示",
+    "hideKey": "隐藏",
+    "apiNote": "密钥仅保存在本设备，不会上传到服务器（BYOK）。",
+    "howToGet": "如何获取API密钥",
+    "featureNote": " 功能将被激活。",
+    "language": "语言",
+    "languageLabel": "显示语言"
+  },
+  "Auth": {
+    "loginTitle": "登录",
+    "loginSubtitle": "欢迎回来，旅行者",
+    "signupTitle": "注册",
+    "email": "邮箱",
+    "emailPlaceholder": "star@atlas.com",
+    "password": "密码",
+    "passwordPlaceholder": "密码",
+    "nickname": "昵称",
+    "nicknamePlaceholder": "旅行者昵称",
+    "loginBtn": "登录",
+    "loggingIn": "登录中...",
+    "signupBtn": "注册",
+    "signingUp": "注册中...",
+    "toSignup": "还没有账号？",
+    "toLogin": "已有账号？",
+    "signupLink": "注册",
+    "loginLink": "登录"
+  },
+  "Onboarding": {
+    "skip": "跳过",
+    "nextBtn": "下一步",
+    "startBtn": "开始",
+    "slides": {
+      "0": { "title": "进入12星座的世界", "desc": "你的生日是冒险的起点。星座和守护角色在等待着你。" },
+      "1": { "title": "探索12个王国", "desc": "每个星座都有独特的王国、NPC和任务。" },
+      "2": { "title": "用生日找到你的星座", "desc": "只需输入生年月日，即可获得专属守护角色。" }
+    }
+  },
+  "Common": {
+    "back": "返回",
+    "loading": "加载中...",
+    "error": "发生了错误。",
+    "retry": "重试",
+    "viewAll": "查看全部",
+    "points": "分"
+  }
+}

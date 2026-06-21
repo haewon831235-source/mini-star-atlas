@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MapPin, CalendarDays } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { TopBar } from "@/components/top-bar";
 import { Starfield } from "@/components/starfield";
 import { Card } from "@/components/ui/card";
@@ -10,18 +11,20 @@ import { EVENTS } from "@/data/events";
 import { formatDateTime, cn } from "@/lib/utils";
 import type { EventStatus } from "@/types";
 
-const STATUS: Record<EventStatus, { label: string; cls: string }> = {
-  upcoming: { label: "오픈 예정", cls: "bg-info/20 text-info" },
-  onsale: { label: "예매중", cls: "bg-success/20 text-success" },
-  soldout: { label: "매진", cls: "bg-ink-muted/20 text-ink-muted" },
-  ended: { label: "종료", cls: "bg-ink-muted/20 text-ink-muted" },
-};
-
 export default function EventListPage() {
+  const t = useTranslations("Events");
+
+  const STATUS: Record<EventStatus, { label: string; cls: string }> = {
+    upcoming: { label: t("status.upcoming"), cls: "bg-info/20 text-info" },
+    onsale: { label: t("status.onsale"), cls: "bg-success/20 text-success" },
+    soldout: { label: t("status.soldout"), cls: "bg-ink-muted/20 text-ink-muted" },
+    ended: { label: t("status.ended"), cls: "bg-ink-muted/20 text-ink-muted" },
+  };
+
   return (
     <main className="relative min-h-[100dvh]">
       <Starfield count={30} />
-      <TopBar title="공연" back />
+      <TopBar title={t("title")} back />
       <div className="relative z-10 space-y-3 px-4 py-4">
         {EVENTS.map((e) => (
           <Link key={e.id} href={`/events/${e.id}`}>

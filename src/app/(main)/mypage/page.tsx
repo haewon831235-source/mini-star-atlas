@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BookOpen, Sparkles, Ticket, TrendingUp, LogOut, Settings } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { TopBar } from "@/components/top-bar";
 import { Starfield } from "@/components/starfield";
 import { Card } from "@/components/ui/card";
@@ -14,23 +15,24 @@ import { getZodiacById } from "@/data/zodiacs";
 import { CHARACTERS } from "@/data/characters";
 import { ACHIEVEMENTS } from "@/data/achievements";
 
-const MENU = [
-  { href: "/characters", label: "캐릭터 도감", icon: BookOpen },
-  { href: "/zodiac", label: "별자리 도감", icon: Sparkles },
-  { href: "/events", label: "공연", icon: Ticket },
-  { href: "/growth", label: "성장", icon: TrendingUp },
-  { href: "/mypage/settings", label: "설정 (API 키)", icon: Settings },
-];
-
 export default function MyPage() {
   const router = useRouter();
   const { profile, signOut } = useUser();
+  const t = useTranslations("MyPage");
   if (!profile) return null;
 
   const character = getCharacterById(profile.character_id)!;
   const zodiac = getZodiacById(profile.zodiac_id)!;
   const collectionPct = Math.round((profile.ownedCharacterIds.length / CHARACTERS.length) * 100);
   const badges = ACHIEVEMENTS.filter((a) => profile.badgeIds.includes(a.id));
+
+  const MENU = [
+    { href: "/characters", label: t("menu.characters"), icon: BookOpen },
+    { href: "/zodiac", label: t("menu.zodiac"), icon: Sparkles },
+    { href: "/events", label: t("menu.events"), icon: Ticket },
+    { href: "/growth", label: t("menu.growth"), icon: TrendingUp },
+    { href: "/mypage/settings", label: t("menu.settings"), icon: Settings },
+  ];
 
   const logout = async () => {
     await signOut();
@@ -41,9 +43,9 @@ export default function MyPage() {
     <main className="relative min-h-[100dvh]">
       <Starfield count={30} />
       <TopBar
-        title="마이페이지"
+        title={t("title")}
         right={
-          <Link href="/mypage/settings" aria-label="설정" className="flex h-9 w-9 items-center justify-center rounded-full text-ink-soft hover:bg-elevated">
+          <Link href="/mypage/settings" aria-label={t("menu.settings")} className="flex h-9 w-9 items-center justify-center rounded-full text-ink-soft hover:bg-elevated">
             <Settings size={20} />
           </Link>
         }
@@ -62,15 +64,15 @@ export default function MyPage() {
         {/* 통계 */}
         <div className="grid grid-cols-3 gap-3">
           <Card className="p-3 text-center">
-            <p className="text-xs text-ink-muted">레벨</p>
+            <p className="text-xs text-ink-muted">{t("level")}</p>
             <p className="mt-1 text-lg font-extrabold text-ink">{profile.level}</p>
           </Card>
           <Card className="p-3 text-center">
-            <p className="text-xs text-ink-muted">컬렉션</p>
+            <p className="text-xs text-ink-muted">{t("collection")}</p>
             <p className="mt-1 text-lg font-extrabold text-ink">{collectionPct}%</p>
           </Card>
           <Card className="p-3 text-center">
-            <p className="text-xs text-ink-muted">배지</p>
+            <p className="text-xs text-ink-muted">{t("badges")}</p>
             <p className="mt-1 text-lg font-extrabold text-ink">{badges.length}</p>
           </Card>
         </div>
@@ -91,9 +93,9 @@ export default function MyPage() {
 
         {/* 배지 */}
         <section>
-          <h3 className="mb-2 px-1 text-sm font-bold text-ink">획득한 배지</h3>
+          <h3 className="mb-2 px-1 text-sm font-bold text-ink">{t("earnedBadges")}</h3>
           {badges.length === 0 ? (
-            <Card className="p-6 text-center text-sm text-ink-muted">첫 배지를 모아보세요 ✨</Card>
+            <Card className="p-6 text-center text-sm text-ink-muted">{t("noBadges")}</Card>
           ) : (
             <div className="flex flex-wrap gap-3">
               {badges.map((b) => (
@@ -110,7 +112,7 @@ export default function MyPage() {
         </section>
 
         <Button variant="outline" className="w-full" onClick={logout}>
-          <LogOut size={18} /> 로그아웃
+          <LogOut size={18} /> {t("logout")}
         </Button>
       </div>
     </main>

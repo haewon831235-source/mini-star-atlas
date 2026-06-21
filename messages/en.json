@@ -1,0 +1,217 @@
+{
+  "Nav": {
+    "home": "Home",
+    "worldmap": "World Map",
+    "running": "Running",
+    "compatibility": "Compat",
+    "shop": "Shop",
+    "my": "MY"
+  },
+  "MyPage": {
+    "title": "My Page",
+    "level": "Level",
+    "collection": "Collection",
+    "badges": "Badges",
+    "earnedBadges": "Earned Badges",
+    "noBadges": "Collect your first badge ✨",
+    "logout": "Sign Out",
+    "menu": {
+      "characters": "Character Atlas",
+      "zodiac": "Zodiac Atlas",
+      "events": "Events",
+      "growth": "Growth",
+      "settings": "Settings (API Key)"
+    }
+  },
+  "Home": {
+    "greeting": "Hello, {name}",
+    "questTitle": "Today's Quests",
+    "noQuests": "New quests coming soon!",
+    "questClaim": "Claim",
+    "questClaimed": "Claimed",
+    "fortuneTitle": "Today's Fortune",
+    "fortuneDesc": "Check your luck",
+    "myZodiac": "My Zodiac",
+    "worldExplore": "Your kingdom awaits",
+    "worldExploreDesc": "Explore zodiac kingdoms on the World Map.",
+    "exploreBtn": "Explore",
+    "shopBtn": "Go to Shop"
+  },
+  "Fortune": {
+    "title": "Today's Fortune",
+    "overall": "Overall",
+    "love": "Love",
+    "money": "Money",
+    "health": "Health",
+    "luck": "Luck",
+    "aiTitle": "AI Fortune Analysis",
+    "aiBtn": "Get AI Fortune Reading",
+    "aiLoading": "AI is analyzing your fortune...",
+    "noKeyHint": "Add an OpenAI API key in Settings to get AI readings.",
+    "goSettings": "Go to Settings"
+  },
+  "Characters": {
+    "title": "Character Atlas",
+    "collectionStatus": "Collection Status",
+    "locked": "Locked"
+  },
+  "Zodiac": {
+    "title": "Zodiac Atlas",
+    "myZodiac": "My Zodiac",
+    "traits": "Traits",
+    "element": "Element",
+    "planet": "Ruling Planet",
+    "luckyColor": "Lucky Color",
+    "luckyItem": "Lucky Item",
+    "luckyNumber": "Lucky Number",
+    "ability": "Abilities",
+    "relatedShop": "Related Goods",
+    "shopBtn": "Go to Shop",
+    "todayFortune": "Today's Fortune"
+  },
+  "Events": {
+    "title": "Events",
+    "detail": "Event Details",
+    "ticketBtn": "Get Tickets",
+    "status": {
+      "upcoming": "Coming Soon",
+      "onsale": "On Sale",
+      "soldout": "Sold Out",
+      "ended": "Ended"
+    }
+  },
+  "Growth": {
+    "title": "Growth",
+    "toNextLevel": "{exp} EXP to next level",
+    "level": "Level",
+    "totalExp": "Total EXP",
+    "starPoints": "Star Points",
+    "howToEarn": "How to Earn EXP",
+    "inviteBtn": "Invite Friends & Earn EXP",
+    "sources": {
+      "attendance": "Daily Check-in",
+      "quest": "Quest Complete",
+      "invite": "Invite a Friend"
+    }
+  },
+  "Compatibility": {
+    "title": "Zodiac Compatibility",
+    "myBirthday": "My Birthday",
+    "partnerBirthday": "Partner's Birthday",
+    "relationType": "Relationship Type",
+    "checkBtn": "Check Compatibility",
+    "noData": "No data for this combination yet.",
+    "aiBtn": "AI Deep Analysis",
+    "aiLoading": "AI is analyzing...",
+    "noKeyHint": "Add an OpenAI API key in Settings to get AI analysis.",
+    "relations": {
+      "friend": "Friendship",
+      "love": "Romance",
+      "business": "Business"
+    }
+  },
+  "Running": {
+    "title": "Running",
+    "historyTitle": "Running History",
+    "noHistory": "No running history yet.",
+    "mapLoading": "Loading map...",
+    "startBtn": "Start",
+    "pauseBtn": "Pause",
+    "resumeBtn": "Resume",
+    "stopBtn": "Stop",
+    "distance": "Distance",
+    "duration": "Time",
+    "pace": "Pace",
+    "subtitle": "Run under the stars ✨"
+  },
+  "Shop": {
+    "title": "Shop",
+    "categories": {
+      "all": "All",
+      "doll": "Plush",
+      "keyring": "Keyring",
+      "photocard": "Photocard",
+      "figure": "Figure",
+      "etc": "Other"
+    },
+    "addToCart": "Add",
+    "outOfStock": "Out of Stock"
+  },
+  "Cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "emptyDesc": "Find something you like",
+    "goShop": "Go to Shop",
+    "quantity": "Qty",
+    "subtotal": "Subtotal",
+    "checkoutBtn": "Checkout"
+  },
+  "Checkout": {
+    "title": "Order / Pay",
+    "orderItems": "Items ({count})",
+    "shipping": "Shipping Info",
+    "recipient": "Recipient",
+    "phone": "Phone",
+    "address": "Address",
+    "addressPlaceholder": "Shipping address",
+    "phonePlaceholder": "Phone number",
+    "total": "Total",
+    "payBtn": "Demo Pay (no real charge)",
+    "paying": "Processing...",
+    "emptyTitle": "No items to order",
+    "paymentMethod": "Payment Method"
+  },
+  "Settings": {
+    "title": "Settings",
+    "apiSection": "OpenAI API Key",
+    "apiStatus": "OpenAI API Connection",
+    "connected": "Connected",
+    "notSet": "Not set (AI features disabled)",
+    "saveBtn": "Save",
+    "deleteBtn": "Remove",
+    "showKey": "Show",
+    "hideKey": "Hide",
+    "apiNote": "Your key is stored on-device only and never sent to our servers (BYOK).",
+    "howToGet": "How to get an API key",
+    "featureNote": " features will be activated.",
+    "language": "Language",
+    "languageLabel": "Display Language"
+  },
+  "Auth": {
+    "loginTitle": "Sign In",
+    "loginSubtitle": "Welcome back, Traveler",
+    "signupTitle": "Sign Up",
+    "email": "Email",
+    "emailPlaceholder": "star@atlas.com",
+    "password": "Password",
+    "passwordPlaceholder": "Password",
+    "nickname": "Nickname",
+    "nicknamePlaceholder": "Traveler nickname",
+    "loginBtn": "Sign In",
+    "loggingIn": "Signing in...",
+    "signupBtn": "Sign Up",
+    "signingUp": "Signing up...",
+    "toSignup": "Don't have an account?",
+    "toLogin": "Already have an account?",
+    "signupLink": "Sign Up",
+    "loginLink": "Sign In"
+  },
+  "Onboarding": {
+    "skip": "Skip",
+    "nextBtn": "Next",
+    "startBtn": "Get Started",
+    "slides": {
+      "0": { "title": "Enter the World of 12 Zodiacs", "desc": "Your birthday is the start of your adventure. Your zodiac and guardian character await." },
+      "1": { "title": "Explore 12 Kingdoms", "desc": "Each zodiac has its own unique kingdom, NPCs, and quests." },
+      "2": { "title": "Find Your Zodiac by Birthday", "desc": "Just enter your birth date and we'll assign your guardian character." }
+    }
+  },
+  "Common": {
+    "back": "Back",
+    "loading": "Loading...",
+    "error": "Something went wrong.",
+    "retry": "Retry",
+    "viewAll": "View All",
+    "points": "pts"
+  }
+}
