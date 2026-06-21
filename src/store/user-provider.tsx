@@ -12,10 +12,42 @@ import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { getZodiacByBirthday } from "@/lib/zodiac";
 import { getCharacterByZodiac } from "@/data/characters";
 import { expForLevel } from "@/lib/utils";
-import type { UserProfile } from "@/types";
+import type { Coupon, CouponKind, StampSource, UserProfile } from "@/types";
 
 const STORAGE_KEY = "msa.profile";
 const AUTH_KEY = "msa.auth";
+
+const STAMP_SOURCE_LABEL: Record<StampSource, string> = {
+  purchase: "굿즈 구매",
+  event: "공연 참여",
+  quest: "퀘스트 완료",
+  admin: "관리자 적립",
+};
+
+interface CouponInput {
+  title: string;
+  kind: CouponKind;
+  value: string;
+  days: number;
+  source: string;
+}
+
+function makeCoupon(input: CouponInput): Coupon {
+  const now = new Date();
+  const expires = new Date(now.getTime() + input.days * 86_400_000);
+  const rand = Math.random().toString(36).slice(2, 8).toUpperCase();
+  return {
+    id: `cp-${now.getTime()}-${rand}`,
+    code: `PASS-${rand}`,
+    title: input.title,
+    kind: input.kind,
+    value: input.value,
+    issuedAt: now.toISOString(),
+    expiresAt: expires.toISOString(),
+    status: "active",
+    source: input.source,
+  };
+}
 
 interface SignUpInput {
   email: string;
@@ -36,6 +68,9 @@ interface UserContextValue {
   completeQuest: (questId: string, exp: number, star: number) => void;
   ownCharacter: (characterId: string) => void;
   earnBadge: (badgeId: string) => void;
+  addStamp: (source: StampSource, label?: string) => void;
+  issueCoupon: (input: CouponInput) => void;
+  redeemCoupon: (couponId: string) => void;
 }
 
 const UserContext = createContext<UserContextValue | null>(null);
@@ -56,6 +91,9 @@ function buildProfile(input: Omit<SignUpInput, "password"> & { id: string }): Us
     ownedCharacterIds: guardian ? [guardian.id] : [],
     badgeIds: ["ac-first-login", "ac-zodiac"],
     completedQuestIds: [],
+    passportStamps: [],
+    coupons: [],
+    passportHistory: [],
   };
 }
 
@@ -234,9 +272,81 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  // ── 팬 패스포트 ─────────────────────────────────────────
+  // 스탬프 적립. 10칸을 채울 때마다 완성 보상 쿠폰을 자동 발급한다.
+  const addStamp = useCallback((source: StampSource, label?: string) => {
+    setProfile((p) => {
+      if (!p) return p;
+      const at = new Date().toISOString();
+      const stamps = [...(p.passportStamps ?? []), { source, at, label }];
+      const history = [
+        { at, type: "stamp" as const, detail: label ?? STAMP_SOURCE_LABEL[source] },
+        ...(p.passportHistory ?? []),
+      ];
+      let coupons = p.coupons ?? [];
+      if (stamps.length % 10 === 0) {
+        coupons = [
+          makeCoupon({
+            title: "스탬프 카드 완성 5,000원 할인",
+            kind: "discount",
+            value: "5000원",
+            days: 30,
+            source: `stamp-card-${stamps.length / 10}`,
+          }),
+          ...coupons,
+        ];
+        history.unshift({ at, type: "coupon" as const, detail: "스탬프 카드 완성 보상 쿠폰 발급" });
+      }
+      const next: UserProfile = { ...p, passportStamps: stamps, coupons, passportHistory: history };
+      persist(next);
+      return next;
+    });
+  }, []);
+
+  // 쿠폰 발급 (source 키로 중복 발급 방지 — 멱등).
+  const issueCoupon = useCallback((input: CouponInput) => {
+    setProfile((p) => {
+      if (!p) return p;
+      if ((p.coupons ?? []).some((c) => c.source === input.source)) return p;
+      const at = new Date().toISOString();
+      const next: UserProfile = {
+        ...p,
+        coupons: [makeCoupon(input), ...(p.coupons ?? [])],
+        passportHistory: [
+          { at, type: "coupon" as const, detail: `${input.title} 발급` },
+          ...(p.passportHistory ?? []),
+        ],
+      };
+      persist(next);
+      return next;
+    });
+  }, []);
+
+  // 쿠폰 사용 처리.
+  const redeemCoupon = useCallback((couponId: string) => {
+    setProfile((p) => {
+      if (!p) return p;
+      const target = (p.coupons ?? []).find((c) => c.id === couponId);
+      if (!target || target.status !== "active") return p;
+      const at = new Date().toISOString();
+      const next: UserProfile = {
+        ...p,
+        coupons: (p.coupons ?? []).map((c) =>
+          c.id === couponId ? { ...c, status: "used" as const } : c,
+        ),
+        passportHistory: [
+          { at, type: "coupon" as const, detail: `${target.title} 사용` },
+          ...(p.passportHistory ?? []),
+        ],
+      };
+      persist(next);
+      return next;
+    });
+  }, []);
+
   const value = useMemo<UserContextValue>(
-    () => ({ profile, loading, mode, signUp, signIn, signOut, addExp, addStar, completeQuest, ownCharacter, earnBadge }),
-    [profile, loading, mode, signUp, signIn, signOut, addExp, addStar, completeQuest, ownCharacter, earnBadge],
+    () => ({ profile, loading, mode, signUp, signIn, signOut, addExp, addStar, completeQuest, ownCharacter, earnBadge, addStamp, issueCoupon, redeemCoupon }),
+    [profile, loading, mode, signUp, signIn, signOut, addExp, addStar, completeQuest, ownCharacter, earnBadge, addStamp, issueCoupon, redeemCoupon],
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

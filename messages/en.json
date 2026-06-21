@@ -5,7 +5,8 @@
     "running": "Running",
     "compatibility": "Compat",
     "shop": "Shop",
-    "my": "MY"
+    "my": "MY",
+    "passport": "Passport"
   },
   "MyPage": {
     "title": "My Page",
@@ -201,9 +202,18 @@
     "nextBtn": "Next",
     "startBtn": "Get Started",
     "slides": {
-      "0": { "title": "Enter the World of 12 Zodiacs", "desc": "Your birthday is the start of your adventure. Your zodiac and guardian character await." },
-      "1": { "title": "Explore 12 Kingdoms", "desc": "Each zodiac has its own unique kingdom, NPCs, and quests." },
-      "2": { "title": "Find Your Zodiac by Birthday", "desc": "Just enter your birth date and we'll assign your guardian character." }
+      "0": {
+        "title": "Enter the World of 12 Zodiacs",
+        "desc": "Your birthday is the start of your adventure. Your zodiac and guardian character await."
+      },
+      "1": {
+        "title": "Explore 12 Kingdoms",
+        "desc": "Each zodiac has its own unique kingdom, NPCs, and quests."
+      },
+      "2": {
+        "title": "Find Your Zodiac by Birthday",
+        "desc": "Just enter your birth date and we'll assign your guardian character."
+      }
     }
   },
   "Common": {
@@ -213,5 +223,26 @@
     "retry": "Retry",
     "viewAll": "View All",
     "points": "pts"
+  },
+  "Passport": {
+    "title": "Fan Passport",
+    "points": "Points",
+    "tier": "Tier",
+    "stampCard": "Stamp Card",
+    "stampHint": "Collect 10 to earn a discount coupon",
+    "addStampDemo": "Add stamp (demo)",
+    "tiersTitle": "Tier Benefits",
+    "toNextTier": "{points}P to {tier}",
+    "maxTier": "Top tier reached 🎉",
+    "claimBenefit": "Get coupon",
+    "benefitClaimed": "Claimed",
+    "couponsTitle": "My Coupons",
+    "noCoupons": "No coupons yet.",
+    "use": "Use",
+    "used": "Used",
+    "expired": "Expired",
+    "validUntil": "Until {date}",
+    "historyTitle": "Activity",
+    "noHistory": "No activity yet."
   }
 }

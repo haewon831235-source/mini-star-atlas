@@ -5,7 +5,8 @@
     "running": "러닝",
     "compatibility": "궁합",
     "shop": "굿즈",
-    "my": "MY"
+    "my": "MY",
+    "passport": "패스포트"
   },
   "MyPage": {
     "title": "마이페이지",
@@ -201,9 +202,18 @@
     "nextBtn": "다음",
     "startBtn": "시작하기",
     "slides": {
-      "0": { "title": "12별자리의 세계로", "desc": "당신의 생일이 곧 모험의 시작. 별자리와 수호 캐릭터가 당신을 기다려요." },
-      "1": { "title": "12 왕국을 탐험하세요", "desc": "각 별자리마다 고유한 왕국과 NPC, 퀘스트가 펼쳐집니다." },
-      "2": { "title": "생일로 별자리를 찾아요", "desc": "생년월일만 입력하면 당신만의 수호 캐릭터를 부여해 드려요." }
+      "0": {
+        "title": "12별자리의 세계로",
+        "desc": "당신의 생일이 곧 모험의 시작. 별자리와 수호 캐릭터가 당신을 기다려요."
+      },
+      "1": {
+        "title": "12 왕국을 탐험하세요",
+        "desc": "각 별자리마다 고유한 왕국과 NPC, 퀘스트가 펼쳐집니다."
+      },
+      "2": {
+        "title": "생일로 별자리를 찾아요",
+        "desc": "생년월일만 입력하면 당신만의 수호 캐릭터를 부여해 드려요."
+      }
     }
   },
   "Common": {
@@ -213,5 +223,26 @@
     "retry": "다시 시도",
     "viewAll": "전체보기",
     "points": "점"
+  },
+  "Passport": {
+    "title": "팬 패스포트",
+    "points": "포인트",
+    "tier": "등급",
+    "stampCard": "스탬프 카드",
+    "stampHint": "10칸을 모으면 할인 쿠폰을 드려요",
+    "addStampDemo": "스탬프 적립 (데모)",
+    "tiersTitle": "등급 혜택",
+    "toNextTier": "{tier}까지 {points}P",
+    "maxTier": "최고 등급 달성 🎉",
+    "claimBenefit": "쿠폰 받기",
+    "benefitClaimed": "받기 완료",
+    "couponsTitle": "보유 쿠폰",
+    "noCoupons": "보유한 쿠폰이 없어요.",
+    "use": "사용",
+    "used": "사용 완료",
+    "expired": "기간 만료",
+    "validUntil": "{date}까지",
+    "historyTitle": "활동 내역",
+    "noHistory": "아직 활동 내역이 없어요."
   }
 }

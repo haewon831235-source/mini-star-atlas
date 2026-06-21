@@ -124,6 +124,50 @@ export interface AppEvent {
   theme_color?: string;
 }
 
+// ── Fan Passport (팬 패스포트) ──────────────────────────────
+export type StampSource = "purchase" | "event" | "quest" | "admin";
+export type CouponKind = "discount" | "access";
+export type CouponStatus = "active" | "used" | "expired";
+export type PassportHistoryType = "stamp" | "point" | "coupon" | "tier";
+
+export interface PassportStamp {
+  source: StampSource;
+  at: string; // ISO datetime
+  label?: string;
+}
+
+export interface Coupon {
+  id: string;
+  code: string;
+  title: string;
+  kind: CouponKind;
+  value: string; // 예: "5000원", "5%", "free-shipping"
+  issuedAt: string; // ISO datetime
+  expiresAt: string; // ISO datetime
+  status: CouponStatus;
+  source?: string; // 발급 출처 키 (중복 발급 방지)
+}
+
+export interface PassportEntry {
+  at: string; // ISO datetime
+  type: PassportHistoryType;
+  detail: string;
+  amount?: number;
+}
+
+// 등급 마스터 (포인트 구간 기준)
+export interface Tier {
+  id: string;
+  name_ko: string;
+  name_en: string;
+  icon: string;
+  color: string;
+  min: number;
+  max: number;
+  benefits_ko: string[];
+  benefits_en: string[];
+}
+
 export interface UserProfile {
   id: string;
   email: string;
@@ -138,6 +182,10 @@ export interface UserProfile {
   ownedCharacterIds: string[];
   badgeIds: string[];
   completedQuestIds: string[];
+  // 팬 패스포트 (기존 프로필 호환을 위해 옵셔널)
+  passportStamps?: PassportStamp[];
+  coupons?: Coupon[];
+  passportHistory?: PassportEntry[];
 }
 
 export interface Fortune {

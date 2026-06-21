@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Map, HeartHandshake, ShoppingBag, User, Footprints } from "lucide-react";
+import { Home, Map, HeartHandshake, ShoppingBag, User, Footprints, Ticket } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +16,7 @@ export function BottomNav() {
     { href: "/running", label: t("running"), icon: Footprints },
     { href: "/compatibility", label: t("compatibility"), icon: HeartHandshake },
     { href: "/shop", label: t("shop"), icon: ShoppingBag },
+    { href: "/passport", label: t("passport"), icon: Ticket },
     { href: "/mypage", label: t("my"), icon: User },
   ] as const;
 

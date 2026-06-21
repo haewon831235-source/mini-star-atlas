@@ -5,7 +5,8 @@
     "running": "跑步",
     "compatibility": "星座配对",
     "shop": "周边",
-    "my": "MY"
+    "my": "MY",
+    "passport": "护照"
   },
   "MyPage": {
     "title": "我的页面",
@@ -201,9 +202,18 @@
     "nextBtn": "下一步",
     "startBtn": "开始",
     "slides": {
-      "0": { "title": "进入12星座的世界", "desc": "你的生日是冒险的起点。星座和守护角色在等待着你。" },
-      "1": { "title": "探索12个王国", "desc": "每个星座都有独特的王国、NPC和任务。" },
-      "2": { "title": "用生日找到你的星座", "desc": "只需输入生年月日，即可获得专属守护角色。" }
+      "0": {
+        "title": "进入12星座的世界",
+        "desc": "你的生日是冒险的起点。星座和守护角色在等待着你。"
+      },
+      "1": {
+        "title": "探索12个王国",
+        "desc": "每个星座都有独特的王国、NPC和任务。"
+      },
+      "2": {
+        "title": "用生日找到你的星座",
+        "desc": "只需输入生年月日，即可获得专属守护角色。"
+      }
     }
   },
   "Common": {
@@ -213,5 +223,26 @@
     "retry": "重试",
     "viewAll": "查看全部",
     "points": "分"
+  },
+  "Passport": {
+    "title": "粉丝护照",
+    "points": "积分",
+    "tier": "等级",
+    "stampCard": "集章卡",
+    "stampHint": "集满10个即可获得折扣券",
+    "addStampDemo": "获得印章 (演示)",
+    "tiersTitle": "等级权益",
+    "toNextTier": "距{tier}还差{points}P",
+    "maxTier": "已达最高等级 🎉",
+    "claimBenefit": "领取优惠券",
+    "benefitClaimed": "已领取",
+    "couponsTitle": "我的优惠券",
+    "noCoupons": "暂无优惠券。",
+    "use": "使用",
+    "used": "已使用",
+    "expired": "已过期",
+    "validUntil": "有效期至{date}",
+    "historyTitle": "活动记录",
+    "noHistory": "暂无活动记录。"
   }
 }
